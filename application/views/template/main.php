@@ -13,9 +13,9 @@
 <body>
 
 	<?php 
-		if(isset($content)){
-			$this->load->view($content);
-		}
+
+		$this->load->view($content);
+		
 	?>
 
 	<script type="text/javascript" src="<?= base_url('assets/plugins/jquery/jquery-3.4.1.js'); ?>"></script>

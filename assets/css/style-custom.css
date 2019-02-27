@@ -1,4 +1,16 @@
 .container{
-	width: 768px;
+	width: 500px;
 	margin-top: 20px;
+}
+
+.panel{
+	border-radius: 0px !important;
+}
+
+.well{
+	border-radius: 0px !important;
+}
+
+.btn{
+	border-radius: 0px !important;
 }
