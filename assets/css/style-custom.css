@@ -3,14 +3,6 @@
 	margin-top: 20px;
 }
 
-.panel{
-	border-radius: 0px !important;
-}
-
-.well{
-	border-radius: 0px !important;
-}
-
-.btn{
+*{
 	border-radius: 0px !important;
 }

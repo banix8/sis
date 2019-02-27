@@ -14,12 +14,12 @@
 					<span role="button" class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="form-group col-md-6">
-					<button type="submit" class="btn btn-primary btn-lg btn-block">Login
+					<button type="submit" class="btn btn-primary btn-block">Login
 					<i class="fas fa-sign-in-alt"></i>
 					</button>
 				</div>
 				<div class="form-group col-md-6">
-					<a href="<?= base_url('page/register'); ?>" class="btn btn-success btn-lg btn-block">Sign-up
+					<a href="<?= base_url('page/register'); ?>" class="btn btn-success btn-block">Sign-up
 						<i class="fas fa-user-plus"></i>
 					</a>
 				</div>
