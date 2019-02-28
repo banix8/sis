@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Register extends CI_Controller {
 
+
 	public function index()
 	{
 		$data['content'] = 'registration';
@@ -11,8 +12,7 @@ class Register extends CI_Controller {
 
 	// This is the transaction for registering new user account
 	public function registration(){
-		$this->load->model('Useraccount', 'model');
-
+		$this->load->model('Useraccounts', 'model');
 		$data = array(
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
@@ -26,6 +26,6 @@ class Register extends CI_Controller {
 
 	}
 
-	
+
 	
 }

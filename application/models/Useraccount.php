@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Useraccount extends CI_Model {
+	
 	protected $table = 'useraccount';
 
 	public function create($data){

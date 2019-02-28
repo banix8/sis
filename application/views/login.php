@@ -4,7 +4,7 @@
 			<h4>Student Information System</h4>
 		</div>
 		<div class="panel-body col-md-12 well">
-			<form action="" method="post" class="loginform" role="form">
+			<form action="<?= base_url('login/start'); ?>" method="post" class="loginform" role="form">
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" id="username" name="username" placeholder="School ID No." required>
 					<span class="glyphicon glyphicon-user form-control-feedback"></span>
