@@ -5,6 +5,14 @@ class Useraccount extends CI_Model {
 	
 	protected $table = 'useraccount';
 
+	public function check_account($data = null){
+		if($data != null){
+			$sql = "SELECT * FROM ".$this->table." WHERE username ='".$data['username']."' AND password = '".$data['password']."'";
+
+			return $this->db->query($sql)->result();
+		}
+	}
+
 	public function create($data){
 		$sql = "INSERT INTO ".$this->table."(username,password) VALUES ('".$data['username']."', '".$data['password']."')";
 
@@ -14,12 +22,6 @@ class Useraccount extends CI_Model {
 	}
 
 	public function read($data = null){
-		if($data != null){
-			$sql = "SELECT * FROM ".$this->table." WHERE username ='".$data['username']."' AND password = '".$data['password']."'";
-
-			return $this->db->query($sql)->num_rows();
-		}
-
 		$sql = "SELECT * FROM ".$this->table;
 
 		// SELECT query returns recordset

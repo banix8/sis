@@ -4,6 +4,16 @@
 			<h4>Student Information System</h4>
 		</div>
 		<div class="panel-body col-md-12 well">
+			<?php 
+				if($this->session->flashdata('error_msg') != null){
+			?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Error: </strong> <?= $this->session->flashdata('error_msg'); ?>
+					</div>
+			<?php
+				}
+			?>
 			<form action="<?= base_url('login/start'); ?>" method="post" class="loginform" role="form">
 				<div class="form-group has-feedback">
 					<input type="text" class="form-control" id="username" name="username" placeholder="School ID No." required>
