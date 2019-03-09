@@ -17,22 +17,38 @@ class Useraccount extends CI_Model {
 
 		return $this->db->query($sql);
 
+		// return $this->db->insert($data);
+
 	}
 
-	public function read(){
-		
-		$sql = "SELECT * FROM ".$this->table;
+	public function read($id = null){
+		if($id != null){
+			$sql = "SELECT * FROM ".$this->table." WHERE userid = ".$id;
+
+			return $this->db->query($sql)->result();
+		}
+
+		$sql = "SELECT * FROM ".$this->table." WHERE status = '1' ";
 
 		return $this->db->query($sql)->result();
 
+		// return $this->db->get($this->table);
+
 	}
 
-	public function update($data){
-		
+	public function update($data, $userid){
+		$sql = "UPDATE ".$this->table." SET username = '".$data['username']."', password = '".$data['password']."' WHERE userid = '".$userid."'";
+
+		return $this->db->query($sql);
+
+		// return $this->db->where('userid', $userid)->update($this->table, $data);
+
 	}
 
-	public function disable($data){
-		
+	public function disable($id){
+		$sql = "UPDATE ".$this->table." SET status = '0' WHERE userid = '".$id."'";
+
+		return $this->db->query($sql);
 	}
 
 }
