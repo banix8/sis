@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller {
 
 		$data['pagename'] = 'Dashboard';
 		$data['contents'] = 'dashboard';		
-		$this->load->view('templates/main', $data);
+		$this->load->view('templates/sbadmin', $data);
 	}
 
 	public function update(){
