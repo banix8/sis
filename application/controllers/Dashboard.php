@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function index(){
-
+		$this->check_access();
 		$data['users'] = $this->user->read();
 
 		$data['pagename'] = 'Dashboard';
@@ -53,5 +53,17 @@ class Dashboard extends CI_Controller {
 		}
 
 	}
+
+	private function check_access(){
+		if($this->session->has_userdata('logged_in')){
+			if($this->session->userdata('accesslevel') == 1){
+				return true;
+			}else{
+				redirect('app');
+			}
+	    }else{
+	    	redirect('app');
+	    }
+    }
 
 }
