@@ -15,7 +15,7 @@
 			if(isset($contents)){
 				$this->load->view($contents);
 			}else{
-				echo "No Page to Loadss";
+				echo "No Page to Loads";
 			}
 		?>
 
