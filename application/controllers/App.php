@@ -22,7 +22,6 @@ class App extends CI_Controller {
 
 
 	public function login(){
-		
 		$data = $this->input->post();
 		$result = $this->user->check_account($data);
 
