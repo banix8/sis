@@ -5,14 +5,33 @@
 				<h4><?= $pagename; ?> : SIS</h4>
 			</div>
 			<div class="panel-body">
+				<?php 
+					if($this->session->flashdata('error_msg') != null){
+						$msg = $this->session->flashdata('error_msg');
+						$newMsg = "";
+						foreach($msg as $key => $val){
+							$newMsg .= $val."<br>";
+						}
+				?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  
+					
+				<?php 
+					   echo $newMsg;
+				?>
+					</div>
+				<?php 
+					}
+				?>
 				<div class="form-group">
-					<input type="text" placeholder="Username" class="form-control" name="username" required>
+					<input type="text" placeholder="Username" class="form-control" name="username">
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control" name="password" required>
+					<input type="password" placeholder="Password" class="form-control" name="password">
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Re-type Password" class="form-control" name="repassword" required>
+					<input type="password" placeholder="Re-type Password" class="form-control" name="repassword">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Register</button>

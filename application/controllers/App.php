@@ -47,12 +47,18 @@ class App extends CI_Controller {
 
 		$data = $this->input->post();
 
-		if($this->user->create($data)){
-			echo "Successfully Created! <a href='".base_url()."'>Go to Login</a>";
-		}else{
-			echo "Failed to create! <a href='".base_url('app/register')."'>Register Again</a>";
-		}
+		$result = $this->validate($data); // return array of error messages
 
+		if(count($result) == 0){
+			if($this->user->create($data)){
+				$this->setFlashData(array('success_msg' => "Successfully Created!"));
+			}else{
+				$this->setFlashData(array('error_msg' => "Failed to create!"));
+			}
+		}else{
+			$this->setFlashData(array('error_msg' => $result));
+		}
+		redirect('app/register');
 	}
 
 	private function setSession($data){
@@ -65,6 +71,10 @@ class App extends CI_Controller {
 		$this->session->set_userdata($sessionData);
 	}
 
+	private function setFlashData($data){
+		$this->session->set_flashdata($data);
+	}
+
 	private function check_access(){
 		if($this->session->has_userdata('logged_in')){
 			if($this->session->userdata('accesslevel') == 1){
@@ -75,6 +85,29 @@ class App extends CI_Controller {
 		}else{
 			return true;
 		}
+	}
+
+	private function validate($data){
+
+		$err_msg = []; 
+		
+		if($data['username'] == ''){
+			array_push($err_msg, "Username is not define");
+		}
+
+		if($data['password'] == ''){
+			array_push($err_msg, "Password is not define");
+		}
+
+		if($data['repassword'] == ''){
+			array_push($err_msg, "Please confirm your password");
+		}
+
+		if($data['password'] != $data['repassword']){
+			array_push($err_msg, "Password doesn't match");
+		}
+
+		return $err_msg;
 	}
 
 }
