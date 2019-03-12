@@ -33,8 +33,11 @@ class App extends CI_Controller {
 			$this->setSession($result);			
 			redirect('students');
 		}else{
-			echo "Account doesn't exist <a href='".base_url()."'>Go to Login</a>";
+			$this->setFlashData(array('alertType' => 'danger'));
+			$this->setFlashData(array('system_msg' => array("Account doesn't Exist!")));
 		}
+
+		redirect('app');
 
 	}
 
@@ -45,19 +48,23 @@ class App extends CI_Controller {
 
 	public function registration(){
 
-		$data = $this->input->post();
+		$data = $this->input->post(); // return $_POST global array
 
 		$result = $this->validate($data); // return array of error messages
 
+		$this->setFlashData(array('alertType' => 'danger'));
+
 		if(count($result) == 0){
 			if($this->user->create($data)){
-				$this->setFlashData(array('success_msg' => "Successfully Created!"));
+				$this->setFlashData(array('alertType' => 'success'));
+				$this->setFlashData(array('system_msg' => array("Successfully Registered!")));
 			}else{
-				$this->setFlashData(array('error_msg' => "Failed to create!"));
+				$this->setFlashData(array('system_msg' => array("Failed to create!")));
 			}
 		}else{
-			$this->setFlashData(array('error_msg' => $result));
+			$this->setFlashData(array('system_msg' => $result));
 		}
+		
 		redirect('app/register');
 	}
 
@@ -89,25 +96,29 @@ class App extends CI_Controller {
 
 	private function validate($data){
 
-		$err_msg = []; 
-		
+		$sudlanan_sa_error = []; 
+
 		if($data['username'] == ''){
-			array_push($err_msg, "Username is not define");
+			array_push($sudlanan_sa_error, "Username is not define");
+		}
+
+		if(strlen($data['password']) < 6){
+			array_push($sudlanan_sa_error, "Password should be atleast 6 characters");
 		}
 
 		if($data['password'] == ''){
-			array_push($err_msg, "Password is not define");
+			array_push($sudlanan_sa_error, "Password is not define");
 		}
 
 		if($data['repassword'] == ''){
-			array_push($err_msg, "Please confirm your password");
+			array_push($sudlanan_sa_error, "Please confirm your password");
 		}
 
 		if($data['password'] != $data['repassword']){
-			array_push($err_msg, "Password doesn't match");
+			array_push($sudlanan_sa_error, "Password doesn't match");
 		}
 
-		return $err_msg;
+		return $sudlanan_sa_error; // array size is zero if no errors
 	}
 
 }
