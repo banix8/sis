@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function update(){
-
+		$this->check_access();
 		$userid = $this->input->get('userid');
 
 		$data['useraccount'] = $this->user->read($userid);

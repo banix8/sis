@@ -1,5 +1,6 @@
 <div class="container-fluid">
 	<h4>SIS ADMIN</h4>
+	<a href="<?= base_url('app/logout'); ?>">Logout</a>
 	<hr>
 	<div class="panel">
 		<?php 
