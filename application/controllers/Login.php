@@ -65,6 +65,5 @@ class Login extends CI_Controller {
 	private function setFlashData($array){
 		$this->session->set_flashdata($array);
 	}
-
 	
 }
